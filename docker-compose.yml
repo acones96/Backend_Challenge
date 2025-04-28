@@ -1,0 +1,29 @@
+version: "2.33"
+
+services:
+  challenge-app:
+    build: .
+    ports:
+      - 8080:8080
+    networks:
+      - s-network
+
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: tekton
+    ports:
+      - 5433:5432
+    networks:
+      - s-network
+    volumes:
+      - postgres-s-data:/var/lib/postgresql/data
+
+networks:
+  s-network:
+    driver: bridge
+
+volumes:
+  postgres-s-data:
