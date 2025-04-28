@@ -11,7 +11,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import java.time.LocalDateTime;
-import java.util.List;
+import java.time.format.DateTimeFormatter;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -32,7 +32,9 @@ class LogsServiceTest {
 
     @Test
     void testSaveLog() {
-        Logs log = new Logs(null, LocalDateTime.now(), "POST /api/calculate", "num1=10.0, num2=20.0", "33.0", null);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+
+        Logs log = new Logs(null, LocalDateTime.now().format(formatter), "POST /api/calculate", "num1=10.0, num2=20.0", "33.0", null);
 
         mockLogsService.saveLog(log.getEndpoint(), log.getParameter(), log.getResponse(), log.getError());
 

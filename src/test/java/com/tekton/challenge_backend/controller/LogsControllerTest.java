@@ -26,18 +26,15 @@ class LogsControllerTest {
     @Mock
     LogsService mockLogsService;
 
-    @Mock
-    Pageable mockPageable;
-
     @Test
     void testGetHistory() {
         int page = 0;
         int size = 3;
         Pageable pageable = PageRequest.of(page, size, Sort.by("dateTime").descending());
 
-        Logs log1 = new Logs(1L, LocalDateTime.of(1,1,1,1,1,1), "endpoint", "parameter", "response", null);
-        Logs log2 = new Logs(2L, LocalDateTime.of(1,1,1,1,1,2), "endpoint", "parameter", null, "error");
-        Logs log3 = new Logs(3L, LocalDateTime.of(1,1,1,1,1,3), "endpoint", "parameter", "response", null);
+        Logs log1 = new Logs(1L, LocalDateTime.of(1,1,1,1,1,1).toString(), "endpoint", "parameter", "response", null);
+        Logs log2 = new Logs(2L, LocalDateTime.of(1,1,1,1,1,2).toString(), "endpoint", "parameter", null, "error");
+        Logs log3 = new Logs(3L, LocalDateTime.of(1,1,1,1,1,3).toString(), "endpoint", "parameter", "response", null);
 
         List<Logs> logsList = List.of(log1, log2, log3);
         Page<Logs> logsPage = new PageImpl<>(logsList, pageable, logsList.size());

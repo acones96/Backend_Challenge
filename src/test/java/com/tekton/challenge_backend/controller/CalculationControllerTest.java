@@ -11,7 +11,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.anyDouble;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -21,9 +20,6 @@ class CalculationControllerTest {
 
     @InjectMocks
     CalculationController mockCalculationController;
-
-    @Mock
-    Calculation mockCalculation;
 
 
     @Test
@@ -36,7 +32,7 @@ class CalculationControllerTest {
         ResponseEntity<?> response = mockCalculationController.calculate(request);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
-//        assertEquals(33.0, response.getBody());
+        assertEquals(33.0, response.getBody());
 
         verify(mockCalculationService, times(1)).calculatePercentage(request, endpoint);
 

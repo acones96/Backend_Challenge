@@ -8,6 +8,7 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Service
 public class LogsService {
@@ -19,8 +20,10 @@ public class LogsService {
 
     @Async
     public void saveLog (String endpoint, String parameter, String response, String error) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+
         Logs log = Logs.builder()
-                .dateTime(LocalDateTime.now())
+                .dateTime(LocalDateTime.now().format(formatter))
                 .endpoint(endpoint)
                 .parameter(parameter)
                 .response(response)
