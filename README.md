@@ -45,7 +45,7 @@ There are two main endpoints:
 1. `/api/calculate`: Located in [CalculationController](src/main/java/com/tekton/challenge_backend/controller/CalculationController.java).
 2. `/api/history`: Located in [LogsController](src/main/java/com/tekton/challenge_backend/controller/LogsController.java).
 
-You can find the collection and the environment for these in the [postman resources](src/main/resources/postman).
+> You can find the collection and the environment import files for these in the [postman resources](src/main/resources/postman).
 
 ### Calculation API for Postman
 * **POST `http://localhost:8080/api/calculate`:** Perform a percentage-based calculation.
