@@ -1,4 +1,4 @@
-# Tekton Challenge Back-end
+# Challenge Back-end
 This project is a REST API built with Spring Boot (Java 21) that performs dynamic percentage calculations, caches results, and logs request history asynchronously. It is designed for efficient computation and data storage using PostgreSQL and Docker.
 
 ## Features
