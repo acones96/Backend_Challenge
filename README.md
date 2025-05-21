@@ -30,8 +30,9 @@ But it can be modified in the `application.properties` file.
 ### Docker
 Run the containers using his docker-compose.yml. To run use the following steps and the application and postreSQL will be running.
 
-1. Build the Docker image: `docker-compose build`
-2. Start the service: `docker-compose up`
+1. Build maven project: `mvn clean package`
+2. Build the Docker image: `docker-compose build`
+3. Start the service: `docker-compose up`
 
 The application will be available at `http://localhost:8080`
 
@@ -39,6 +40,9 @@ The application will be available at `http://localhost:8080`
 The [docker-compose.yml](docker-compose.yml) file set the following services:
 * **challenge-app:** The Spring Bot application.
 * **Postgres:** The PostgresSQL database.
+
+## Swagger
+To be able to see if the Swagger requests, you can go to the [swagger](http://localhost:8080/swagger-ui/index.html#/) application site.
 
 ## API Endpoints
 There are two main endpoints:

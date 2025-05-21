@@ -2,6 +2,8 @@ package com.tekton.challenge_backend.service;
 
 import com.tekton.challenge_backend.model.Logs;
 import com.tekton.challenge_backend.repository.LogsRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.scheduling.annotation.Async;
@@ -12,6 +14,7 @@ import java.time.format.DateTimeFormatter;
 
 @Service
 public class LogsService {
+    private static final Logger logger = LoggerFactory.getLogger(LogsService.class);
     private final LogsRepository logsRepository;
 
     public LogsService(LogsRepository logsRepository) {
@@ -30,6 +33,7 @@ public class LogsService {
                 .error(error)
                 .build();
         logsRepository.save(log);
+        logger.info("Log saved successfully!");
     }
 
     public Page<Logs> getLogs (Pageable pageable) {
